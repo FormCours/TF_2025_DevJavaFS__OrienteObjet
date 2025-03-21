@@ -1,6 +1,6 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Car {
 
@@ -9,10 +9,33 @@ public class Car {
     public String model;
     public Integer kilometers;
     public boolean isCrash;
-    public Date registrationDate;
-    public Date lastServiceDate;
+    public LocalDate registrationDate;
+    public LocalDate lastServiceDate;
     public double price;
-    public String availability = "NOPE"; //TODO Replace by Enum 😲
+    public String availability; //TODO Replace by Enum 😲
+
+    // Constructeur
+    public Car(String brand, String model, Integer kilometers, LocalDate registrationDate, double salePrice) {
+        this.brand = brand;
+        this.model = model;
+        this.kilometers = kilometers;
+        this.registrationDate= registrationDate;
+        this.lastServiceDate = null;
+
+        price = salePrice;
+        isCrash = false;
+        availability = "NOPE";
+    }
+
+    public Car(String brand, String model, Integer kilometers, LocalDate registrationDate, double salePrice, LocalDate lastServiceDate, boolean isCrash) {
+        // Appel au constructeur
+        this(brand, model, kilometers, registrationDate, salePrice);
+
+        this.lastServiceDate = lastServiceDate;
+        this.isCrash = isCrash;
+    }
+
+
 
     // Comportement (Méthode)
     //  - Fonction -> Execute des codes pour renvoyer un resultat
